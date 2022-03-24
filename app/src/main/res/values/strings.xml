@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DNNR</string>
+    <string name="favorite">favorite</string>
+    <string name="profile">profile</string>
 </resources>
