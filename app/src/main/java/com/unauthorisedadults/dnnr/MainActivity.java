@@ -31,12 +31,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startGroup(View view) {
+        //Noget med at starte en gruppe og sende brugeren over til gruppe-view med intent
     }
 
 
     public void joinGroup(View view) {
+        //Det er vist bare intent til at komme til en anden screen
     }
 
     public void signIn(View view) {
+        //signIn metode, og så giver det nogle ekstra muligheder på samme skærm, ved ikke lige hvordan man griber det an
     }
 }
