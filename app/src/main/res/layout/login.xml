@@ -8,6 +8,18 @@
 
     <!--     TODO: toolbar skal pilles ud og gøres til et fragment eller sådan noget.
         Jeg ved ikke hvordan det virker, jeg ved bare at det er dumt hvis vi skal gentage den 100 gange-->
+
+    <TextView
+        android:id="@+id/OR2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="or sign in"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/DNNR_Toolbar"
         style="@style/Widget.MaterialComponents.Toolbar.Primary"
@@ -22,7 +34,7 @@
         android:id="@+id/Welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome"
+        android:text="Login"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -31,52 +43,37 @@
         app:layout_constraintVertical_bias="0.227" />
 
     <Button
-        android:id="@+id/StartGroup"
+        android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        android:onClick="startGroup"
-        android:text="Start Group"
+        android:text="Login"
         app:layout_constraintBaseline_toBaselineOf="@+id/guest"
         app:layout_constraintEnd_toStartOf="@+id/guest"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/PasswordField" />
 
     <Button
         android:id="@+id/guest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="10dp"
-        android:onClick="joinGroup"
-        android:text="Join group"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:text="Guest"
+        app:layout_constraintEnd_toEndOf="@+id/PasswordField"
         app:layout_constraintStart_toEndOf="@+id/StartGroup"
-        app:layout_constraintTop_toBottomOf="@+id/Welcome" />
-
-    <TextView
-        android:id="@+id/OR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="13dp"
-        android:text="or sign in"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintBottom_toTopOf="@+id/usernameField"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/PasswordField" />
 
     <EditText
         android:id="@+id/usernameField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="69dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text="Username"
-        app:layout_constraintEnd_toEndOf="@+id/guest"
-        app:layout_constraintTop_toBottomOf="@+id/StartGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/Welcome"
+        tools:layout_editor_absoluteX="100dp" />
 
     <EditText
         android:id="@+id/PasswordField"
@@ -90,14 +87,14 @@
 
     <Button
         android:id="@+id/signIn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="96dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="32dp"
         android:onClick="signIn"
         android:text="Sign in"
-        app:layout_constraintEnd_toEndOf="@+id/PasswordField"
-        app:layout_constraintStart_toStartOf="@+id/PasswordField"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordField" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/OR2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
        getSupportActionBar().setTitle("");
 
         startGroup = findViewById(R.id.StartGroup);
-        joinGroup = findViewById(R.id.JoinGroup);
+        joinGroup = findViewById(R.id.guest);
         usernameField = findViewById(R.id.usernameField);
         passwordField = findViewById(R.id.PasswordField);
         signIn = findViewById(R.id.signIn);
