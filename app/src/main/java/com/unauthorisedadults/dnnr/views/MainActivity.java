@@ -1,4 +1,4 @@
-package com.unauthorisedadults.dnnr;
+package com.unauthorisedadults.dnnr.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.unauthorisedadults.dnnr.R;
 
 public class MainActivity extends AppCompatActivity {
 

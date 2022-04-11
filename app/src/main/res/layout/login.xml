@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".views.MainActivity">
 
     <!--     TODO: toolbar skal pilles ud og gøres til et fragment eller sådan noget.
         Jeg ved ikke hvordan det virker, jeg ved bare at det er dumt hvis vi skal gentage den 100 gange-->

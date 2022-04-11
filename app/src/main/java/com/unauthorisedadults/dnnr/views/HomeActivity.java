@@ -1,4 +1,4 @@
-package com.unauthorisedadults.dnnr;
+package com.unauthorisedadults.dnnr.views;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.unauthorisedadults.dnnr.R;
 
 public class HomeActivity extends AppCompatActivity {
 
