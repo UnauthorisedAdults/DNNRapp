@@ -17,14 +17,14 @@ public class MainActivity extends AppCompatActivity {
 
     Button startGroup, joinGroup, signIn;
     EditText usernameField, passwordField;
-    ViewModel viewModel;
+    MainViewModel mainViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         Toolbar toolbar = findViewById(R.id.DNNR_Toolbar);
         setSupportActionBar(toolbar);
@@ -40,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
         assignRandomId();
     }
 
-    public String assignRandomId() {
-        return null;
+    public String assignRandomId()
+    {
+        return mainViewModel.assignRandomId();
     }
 
     public void startGroup(View view) {
