@@ -8,7 +8,7 @@
     android:scrollbarStyle="insideOverlay">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView"
+        android:id="@+id/container"
         android:layout_width="333dp"
         android:layout_height="580dp"
         android:background="@color/material_dynamic_neutral_variant70"
