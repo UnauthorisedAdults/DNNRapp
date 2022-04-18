@@ -1,4 +1,4 @@
-package com.unauthorisedadults.dnnr.models.network;
+package com.unauthorisedadults.dnnr.network;
 
 public class RecipeAPIConnection {
 

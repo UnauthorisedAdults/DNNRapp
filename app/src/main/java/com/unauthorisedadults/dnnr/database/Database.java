@@ -3,7 +3,7 @@ package com.unauthorisedadults.dnnr.database;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Database {
+public class Database implements Idao {
     //For now just hardcoded
     private final ArrayList<String> animals = new ArrayList<String>(
             Arrays.asList("Dog",
@@ -15,16 +15,23 @@ public class Database {
             Arrays.asList("Orange",
                     "Red",
                     "Blue",
-                    "Purple")
+                    "Purple",
+                    "Lilac")
     );
 
-    private ArrayList<String> usedNames = new ArrayList<>();
 
     public Database() {
     }
 
-    public String getRandomId() {
-        //TODO find random combination
-        return null;
+
+
+    @Override
+    public ArrayList<String> getAnimals() {
+        return animals;
+    }
+
+    @Override
+    public ArrayList<String> getColors() {
+        return colors;
     }
 }

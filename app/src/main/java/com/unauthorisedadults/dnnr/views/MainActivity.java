@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.unauthorisedadults.dnnr.R;
 import com.unauthorisedadults.dnnr.viewModels.MainViewModel;
@@ -17,7 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
     Button startGroup, joinGroup, signIn;
     EditText usernameField, passwordField;
+    TextView username;
     MainViewModel mainViewModel;
+    String randomId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +36,16 @@ public class MainActivity extends AppCompatActivity {
 
         startGroup = findViewById(R.id.StartGroup);
         joinGroup = findViewById(R.id.guest);
+        username = findViewById(R.id.username);
         usernameField = findViewById(R.id.usernameField);
         passwordField = findViewById(R.id.PasswordField);
         signIn = findViewById(R.id.signIn);
 
-        assignRandomId();
+        randomId = assignRandomId();
+        username.setText(randomId);
     }
 
-    public String assignRandomId()
-    {
+    public String assignRandomId() {
         return mainViewModel.assignRandomId();
     }
 
