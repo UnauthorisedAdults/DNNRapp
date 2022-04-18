@@ -3,14 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:scrollbarAlwaysDrawVerticalTrack="false"
+    android:scrollbarStyle="insideOverlay">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView"
+        android:layout_width="333dp"
+        android:layout_height="580dp"
+        android:background="@color/material_dynamic_neutral_variant70"
+        android:rotation="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedImageView" />
 
     <TextView
         android:id="@+id/GroupMembersBox"
         android:layout_width="292dp"
         android:layout_height="307dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="28dp"
+        android:padding="16dp"
         android:text="GroupMembers"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,24 +49,24 @@
         android:layout_width="130dp"
         android:layout_height="65dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
+        android:onClick="startSwiping"
         android:text="Start"
         app:layout_constraintEnd_toStartOf="@+id/cancelButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/GroupMembersBox"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:onClick="startSwiping"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <Button
         android:id="@+id/cancelButton"
         android:layout_width="130dp"
         android:layout_height="65dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="4dp"
+        android:onClick="cancelGroup"
         android:text="Cancel"
         app:layout_constraintEnd_toEndOf="@+id/GroupMembersBox"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:onClick="cancelGroup"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"

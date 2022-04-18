@@ -15,4 +15,9 @@
         <item name="android:windowBackground">@mipmap/ic_launcher_background_stripy</item>
 
     </style>
+
+    <style name="roundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
 </resources>

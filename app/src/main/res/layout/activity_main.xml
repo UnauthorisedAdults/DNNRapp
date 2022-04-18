@@ -8,20 +8,6 @@
 
     <!--     TODO: toolbar skal pilles ud og gøres til et fragment eller sådan noget.
         Jeg ved ikke hvordan det virker, jeg ved bare at det er dumt hvis vi skal gentage den 100 gange-->
-
-    <TextView
-        android:id="@+id/welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.173" />
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/DNNR_Toolbar"
         style="@style/Widget.MaterialComponents.Toolbar.Primary"
@@ -31,6 +17,44 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- TODO: Denne her container box skal måske også gøres til et fragement eller sådan noget-->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView"
+        android:layout_width="333dp"
+        android:layout_height="580dp"
+        android:background="@color/material_dynamic_neutral_variant70"
+        android:rotation="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedImageView" />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.254" />
+
+    <Button
+        android:id="@+id/signIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="signIn"
+        android:text="Sign in"
+        app:layout_constraintEnd_toEndOf="@+id/PasswordField"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/PasswordField"
+        app:layout_constraintTop_toBottomOf="@+id/PasswordField" />
 
     <TextView
         android:id="@+id/username"
@@ -39,11 +63,11 @@
         android:text="user"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.255" />
+        app:layout_constraintVertical_bias="0.329" />
 
     <Button
         android:id="@+id/StartGroup"
@@ -61,7 +85,7 @@
         android:id="@+id/guest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="10dp"
         android:onClick="joinGroup"
         android:text="Join group"
@@ -84,8 +108,8 @@
         android:id="@+id/usernameField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="69dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="24dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
@@ -102,17 +126,6 @@
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="@+id/usernameField"
         app:layout_constraintTop_toBottomOf="@+id/usernameField" />
-
-    <Button
-        android:id="@+id/signIn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:onClick="signIn"
-        android:text="Sign in"
-        app:layout_constraintEnd_toEndOf="@+id/PasswordField"
-        app:layout_constraintStart_toStartOf="@+id/PasswordField"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordField" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
