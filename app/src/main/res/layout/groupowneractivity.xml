@@ -7,30 +7,35 @@
     android:scrollbarAlwaysDrawVerticalTrack="false"
     android:scrollbarStyle="insideOverlay">
 
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/container"
-        android:layout_width="333dp"
-        android:layout_height="580dp"
+        android:layout_width="330dp"
+        android:layout_height="574dp"
+        android:layout_marginEnd="39dp"
         android:background="@color/material_dynamic_neutral_variant70"
         android:rotation="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498"
         app:shapeAppearanceOverlay="@style/roundedImageView" />
 
     <TextView
         android:id="@+id/GroupMembersBox"
-        android:layout_width="292dp"
-        android:layout_height="307dp"
-        android:layout_marginBottom="28dp"
+        android:layout_width="285dp"
+        android:layout_height="276dp"
+        android:layout_marginBottom="4dp"
         android:padding="16dp"
         android:text="GroupMembers"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -42,18 +47,19 @@
         app:layout_constraintBottom_toTopOf="@+id/GroupMembersBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:layout_constraintVertical_bias="0.357" />
 
     <Button
         android:id="@+id/startButton"
         android:layout_width="130dp"
         android:layout_height="65dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:onClick="startSwiping"
         android:text="Start"
         app:layout_constraintEnd_toStartOf="@+id/cancelButton"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="@+id/GroupMembersBox"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
@@ -61,8 +67,8 @@
         android:id="@+id/cancelButton"
         android:layout_width="130dp"
         android:layout_height="65dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
         android:onClick="cancelGroup"
         android:text="Cancel"
         app:layout_constraintEnd_toEndOf="@+id/GroupMembersBox"
@@ -72,8 +78,11 @@
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="39dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="560dp" />
+        app:layout_constraintEnd_toStartOf="@+id/container"
+        app:layout_constraintGuide_begin="632dp"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -81,5 +90,25 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="102dp" />
+
+    <Switch
+        android:id="@+id/allergyFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Filter allergies"
+        app:layout_constraintEnd_toEndOf="@+id/preferenceFilter"
+        app:layout_constraintStart_toStartOf="@+id/preferenceFilter"
+        app:layout_constraintTop_toBottomOf="@+id/GroupIdDisplay" />
+
+    <Switch
+        android:id="@+id/preferenceFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="23dp"
+        android:text="Filter preferences"
+        app:layout_constraintStart_toStartOf="@+id/container"
+        app:layout_constraintTop_toBottomOf="@+id/allergyFilter" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
