@@ -2,24 +2,26 @@ package com.unauthorisedadults.dnnr.views;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.unauthorisedadults.dnnr.R;
 import com.unauthorisedadults.dnnr.models.models.User;
+import com.unauthorisedadults.dnnr.utilities.UTIL;
 
 import java.util.ArrayList;
 
 public class StartGroupOwnerActivity extends AppCompatActivity {
 
-    TextView groupIdDisplay, groupMemberBox;
+    TextView groupIdDisplay, groupMemberListView;
     Button start, cancel;
     Switch allergies, preferences;
-    ArrayList<User> groupMembers; //TODO: liveData heeeerr
+    ArrayList<String> groupMembers = new ArrayList<>(); //TODO: liveData heeeerr
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class StartGroupOwnerActivity extends AppCompatActivity {
 
 
         groupIdDisplay = findViewById(R.id.GroupIdDisplay);
-        groupMemberBox = findViewById(R.id.GroupMembersBox);
+        groupMemberListView = findViewById(R.id.GroupMembersList);
         start = findViewById(R.id.startButton);
         cancel = findViewById(R.id.cancelButton);
         allergies = findViewById(R.id.allergyFilter);
@@ -42,6 +44,16 @@ public class StartGroupOwnerActivity extends AppCompatActivity {
 
         allergies.setChecked(true);
         preferences.setChecked(true);
+
+        // Gruppeejeren modtages fra intent og navnet tilføjes gruppemedlemslisten
+        Bundle bundle = getIntent().getExtras();
+        User groupOwner = (User) bundle.get(UTIL.USER);
+        System.out.println(groupOwner.getUsername());
+        groupMembers.add(groupOwner.getUsername());
+
+       groupMemberListView.setText(groupMembers.get(0));
+
+
     }
 
     public void startSwiping(View view) {

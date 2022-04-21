@@ -17,6 +17,7 @@ import com.unauthorisedadults.dnnr.R;
 import com.unauthorisedadults.dnnr.models.models.GuestUser;
 import com.unauthorisedadults.dnnr.models.models.RegisteredUser;
 import com.unauthorisedadults.dnnr.models.models.User;
+import com.unauthorisedadults.dnnr.utilities.UTIL;
 import com.unauthorisedadults.dnnr.viewModels.MainViewModel;
 
 import java.io.Serializable;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.DNNR_Toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setIcon(R.drawable.ic_logo_smaller);
+        //getSupportActionBar().setIcon(R.drawable.ic_logo_smaller);
         getSupportActionBar().setTitle("");
 
         startGroup = findViewById(R.id.StartGroup);
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         usernameField = findViewById(R.id.usernameField);
         passwordField = findViewById(R.id.PasswordField);
         signIn = findViewById(R.id.signIn);
-        container = findViewById(R.id.container);
+       // container = findViewById(R.id.container);
 
         randomId = assignRandomId();
         username.setText(randomId);
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
      og brugeren bliver sat som group owner*/
     public void startGroup(View view) {
         Intent intent = new Intent(MainActivity.this, StartGroupOwnerActivity.class);
-        intent.putExtra("User", user);
+        intent.putExtra(UTIL.USER, user);
         startActivity(intent);
     }
 

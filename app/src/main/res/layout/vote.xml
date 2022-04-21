@@ -9,18 +9,18 @@
 
     <!--on below line we are creating a swipe
          frame layout for providing a swipe action-->
-    <com.daprlabs.cardstack.SwipeFrameLayout
+ <!--   <com.daprlabs.cardstack.SwipeFrameLayout
         xmlns:swipedeck="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"> -->
 
         <!--below widget is used for creating a swipe deck-->
         <!--in below widget card spacing is the spacing between cards
             max visible is the max number of cards which are visible
             render above is to render the cards
             rotation degree is the angle of card rotation when card is swiped-->
-        <com.daprlabs.cardstack.SwipeDeck
+     <!--   <com.daprlabs.cardstack.SwipeDeck
             android:id="@+id/swipe_deck"
             android:layout_width="match_parent"
             android:layout_height="480dp"
@@ -30,6 +30,6 @@
             swipedeck:render_above="true"
             swipedeck:rotation_degrees="15" />
 
-    </com.daprlabs.cardstack.SwipeFrameLayout>
+    </com.daprlabs.cardstack.SwipeFrameLayout>-->
 
 </RelativeLayout>
