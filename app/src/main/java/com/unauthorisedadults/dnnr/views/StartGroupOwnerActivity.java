@@ -2,9 +2,7 @@ package com.unauthorisedadults.dnnr.views;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -18,7 +16,7 @@ import java.util.ArrayList;
 
 public class StartGroupOwnerActivity extends AppCompatActivity {
 
-    TextView groupIdDisplay, groupMemberListView;
+    TextView groupIdDisplay, groupMemberList;
     Button start, cancel;
     Switch allergies, preferences;
     ArrayList<String> groupMembers = new ArrayList<>(); //TODO: liveData heeeerr
@@ -34,9 +32,10 @@ public class StartGroupOwnerActivity extends AppCompatActivity {
         getSupportActionBar().setIcon(R.drawable.ic_logo_smaller);
         getSupportActionBar().setTitle("");*/
 
-
         groupIdDisplay = findViewById(R.id.GroupIdDisplay);
-        groupMemberListView = findViewById(R.id.GroupMembersList);
+        groupIdDisplay.setText("123456");
+
+        groupMemberList = findViewById(R.id.GroupMembersList);
         start = findViewById(R.id.startButton);
         cancel = findViewById(R.id.cancelButton);
         allergies = findViewById(R.id.allergyFilter);
@@ -48,10 +47,12 @@ public class StartGroupOwnerActivity extends AppCompatActivity {
         // Gruppeejeren modtages fra intent og navnet tilføjes gruppemedlemslisten
         Bundle bundle = getIntent().getExtras();
         User groupOwner = (User) bundle.get(UTIL.USER);
-        System.out.println(groupOwner.getUsername());
         groupMembers.add(groupOwner.getUsername());
 
-       groupMemberListView.setText(groupMembers.get(0));
+        for (int i = 0; i < groupMembers.size(); i++) {
+            groupMemberList.append(groupMembers.get(i) + "\n");
+        }
+
 
 
     }
@@ -63,7 +64,6 @@ public class StartGroupOwnerActivity extends AppCompatActivity {
 
     public void cancelGroup(View view)
     {
-        //viewModel.cancelgroup
-        //Intent sender bruger tilbage til home
+        finish();
     }
 }
