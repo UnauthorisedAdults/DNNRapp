@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -65,8 +66,11 @@ public class MainActivity extends AppCompatActivity {
     /*Start group metoden sender brugeren til et group owner view. I dette view bliver gruppen oprettet
      og brugeren bliver sat som group owner*/
     public void startGroup(View view) {
-        Intent intent = new Intent(MainActivity.this, StartGroupOwnerActivity.class);
+      /*  Intent intent = new Intent(MainActivity.this, StartGroupOwnerActivity.class);
         intent.putExtra(UTIL.USER, user);
+        startActivity(intent);*/
+        Context context = getApplicationContext();
+        Intent intent = new Intent(context,VoteActivity.class);
         startActivity(intent);
     }
 

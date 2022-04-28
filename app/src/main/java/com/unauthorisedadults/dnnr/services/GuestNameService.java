@@ -16,7 +16,7 @@ public class GuestNameService {
         this.animals = dao.getAnimals();
         this.colors = dao.getColors();
     }
-
+//FIXME: Der kommer ind i mellem fejl her med index out of bounds 5
     public String getRandomId() {
         int range = animals.size() + 1;
         String animal = animals.get((int) (Math.random() * range));
