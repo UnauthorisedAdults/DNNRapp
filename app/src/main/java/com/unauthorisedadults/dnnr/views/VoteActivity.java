@@ -8,9 +8,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.unauthorisedadults.dnnr.R;
+import com.unauthorisedadults.dnnr.cardStack.CardsDataAdapter;
 import com.unauthorisedadults.dnnr.network.RecipeAPI;
 import com.unauthorisedadults.dnnr.network.RecipeAPIConnection;
 import com.unauthorisedadults.dnnr.network.RecipeResponse;
+import com.wenchao.cardstack.CardStack;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,15 +21,28 @@ import retrofit2.internal.EverythingIsNonNull;
 //import com.daprlabs.cardstack.SwipeDeck;
 
 public class VoteActivity extends AppCompatActivity {
-
+    private CardStack mCardStack;
+    private CardsDataAdapter mCardAdapter;
     TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vote);
-        Button button = findViewById(R.id.button);
-        textView = findViewById(R.id.textView);
+
+        //Cardstack indlæsning
+        mCardStack = (CardStack)findViewById(R.id.cardStackContainer);
+        mCardStack.setContentResource(R.layout.card);
+
+        //Cardstack Adapter
+        mCardAdapter = new CardsDataAdapter(getApplicationContext());
+        mCardAdapter.add("Tinananas i Karry");
+        mCardAdapter.add("lalalala");
+        mCardAdapter.add("Trøffel");
+        mCardStack.setAdapter(mCardAdapter);
+
+        Button button = findViewById(R.id.noButton);
+      //  textView = findViewById(R.id.textView);
 
         button.setOnClickListener(btn -> {
             getRandomRecipe();

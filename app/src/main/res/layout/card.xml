@@ -39,6 +39,7 @@
             tools:text="MealTitle" />
 
         <Button
+            android:id="@+id/noButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="NOPE"
@@ -48,7 +49,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/yesButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="YES"
