@@ -5,5 +5,8 @@ public class RecipeResponse {
     private String strMeal;
     private String strCategory;
 
-    public String getRecipe() {return strMeal;}
+    public String getRecipe() {
+        System.out.println("Recipe name in Response: " + strMeal);
+        return strMeal;
+        }
 }

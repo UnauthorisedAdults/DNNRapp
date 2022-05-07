@@ -6,7 +6,7 @@ import retrofit2.http.Headers;
 
 public interface RecipeAPI {
     @Headers({"Accept: application/json"})
-    @GET("api/json/v1/1/random.php")
+    @GET("rest/server.api")
     Call<RecipeResponse> getRecipe();
 
 }

@@ -9,7 +9,7 @@ public class RecipeAPIConnection {
     public static RecipeAPI getRecipeAPI() {
         if (recipeAPI == null) {
             recipeAPI = new Retrofit.Builder()
-                    .baseUrl("https://www.themealdb.com/")
+                    .baseUrl("https://platform.fatsecret.com/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                     .create(RecipeAPI.class);

@@ -43,6 +43,7 @@ public class RecipeRepository {
                 if (response.isSuccessful()) {
                    //assert response.body() != null;
                     randomRecipe.setValue(response.body().getRecipe());
+                    System.out.println("searchRandomRecipe, Recipe = " + randomRecipe.getValue());
                 }
             }
 
@@ -52,6 +53,5 @@ public class RecipeRepository {
                 Log.i("Retrofit", t.getMessage());
             }
         });
-        System.out.println("searchRandomRecipe, Recipe = " + randomRecipe.getValue());
     }
 }
