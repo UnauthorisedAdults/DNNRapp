@@ -9,10 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.unauthorisedadults.dnnr.R;
 import com.unauthorisedadults.dnnr.cardStack.CardsDataAdapter;
+import com.unauthorisedadults.dnnr.models.models.Recipe;
 import com.unauthorisedadults.dnnr.network.RecipeAPI;
 import com.unauthorisedadults.dnnr.network.RecipeAPIConnection;
 import com.unauthorisedadults.dnnr.network.RecipeResponse;
 import com.wenchao.cardstack.CardStack;
+
+import java.net.MalformedURLException;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,13 +39,16 @@ public class VoteActivity extends AppCompatActivity {
         mCardStack.setContentResource(R.layout.card);
 
         //Cardstack Adapter
-        mCardAdapter = new CardsDataAdapter(getApplicationContext());
-        mCardAdapter.add("Tinananas i Karry");
-        mCardAdapter.add("lalalala");
-        mCardAdapter.add("Trøffel");
+        ArrayList<Recipe> recipes = new ArrayList<>();
+        try {
+            recipes.add(new Recipe("Tamiya", "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg", "Vegetarian"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        mCardAdapter = new CardsDataAdapter(getApplicationContext(), recipes);
         mCardStack.setAdapter(mCardAdapter);
 
-        Button button = findViewById(R.id.noButton);
+       Button button = findViewById(R.id.noButton);
       //  textView = findViewById(R.id.textView);
 
         button.setOnClickListener(btn -> {
