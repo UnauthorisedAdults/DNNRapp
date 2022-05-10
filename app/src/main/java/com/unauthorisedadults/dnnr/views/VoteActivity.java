@@ -37,6 +37,7 @@ public class VoteActivity extends AppCompatActivity {
         //Cardstack indlæsning
         mCardStack = (CardStack)findViewById(R.id.cardStackContainer);
         mCardStack.setContentResource(R.layout.card);
+        mCardStack.setStackMargin(20);
 
         //Cardstack Adapter
         ArrayList<Recipe> recipes = new ArrayList<>();
@@ -45,11 +46,13 @@ public class VoteActivity extends AppCompatActivity {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        mCardAdapter = new CardsDataAdapter(getApplicationContext(), recipes);
+        mCardAdapter = new CardsDataAdapter(getApplicationContext());
+        mCardAdapter.addAll(recipes);
+
         mCardStack.setAdapter(mCardAdapter);
 
        Button button = findViewById(R.id.noButton);
-      //  textView = findViewById(R.id.textView);
+      //textView = findViewById(R.id.textView);
 
         button.setOnClickListener(btn -> {
             getRandomRecipe();
@@ -65,7 +68,7 @@ public class VoteActivity extends AppCompatActivity {
             public void onResponse(Call<RecipeResponse> call, Response<RecipeResponse> response) {
                 if (response.isSuccessful()) {
                     assert response.body() != null;
-                    textView.setText(response.body().getRecipe());
+                   // textView.setText(response.body().getRecipe());
                 }
             }
 
