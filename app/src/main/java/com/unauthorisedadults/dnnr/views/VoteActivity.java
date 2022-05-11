@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.unauthorisedadults.dnnr.R;
+import com.unauthorisedadults.dnnr.cardStack.CardListener;
 import com.unauthorisedadults.dnnr.cardStack.CardsDataAdapter;
 import com.unauthorisedadults.dnnr.models.models.Recipe;
 import com.unauthorisedadults.dnnr.network.RecipeAPI;
@@ -37,11 +38,15 @@ public class VoteActivity extends AppCompatActivity {
         //Cardstack indlæsning
         mCardStack = (CardStack)findViewById(R.id.cardStackContainer);
         mCardStack.setContentResource(R.layout.card);
+        mCardStack.setListener(new CardListener());
         mCardStack.setStackMargin(20);
 
         //Cardstack Adapter
         ArrayList<Recipe> recipes = new ArrayList<>();
         try {
+            recipes.add(new Recipe("Tamiya", "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg", "Vegetarian"));
+            recipes.add(new Recipe("Tamiya", "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg", "Vegetarian"));
+            recipes.add(new Recipe("Tamiya", "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg", "Vegetarian"));
             recipes.add(new Recipe("Tamiya", "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg", "Vegetarian"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
