@@ -2,19 +2,21 @@ package com.unauthorisedadults.dnnr.views;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.bumptech.glide.Glide;
 import com.unauthorisedadults.dnnr.R;
+import com.unauthorisedadults.dnnr.cardStack.CardsDataAdapter;
+import com.unauthorisedadults.dnnr.models.models.Recipe;
 import com.unauthorisedadults.dnnr.network.RecipeAPI;
 import com.unauthorisedadults.dnnr.network.RecipeAPIConnection;
 import com.unauthorisedadults.dnnr.network.RecipeResponse;
-import com.unauthorisedadults.dnnr.viewModels.VoteActivityViewModel;
+import com.wenchao.cardstack.CardStack;
+
+import java.net.MalformedURLException;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,22 +25,59 @@ import retrofit2.internal.EverythingIsNonNull;
 //import com.daprlabs.cardstack.SwipeDeck;
 
 public class VoteActivity extends AppCompatActivity {
-
-    private VoteActivityViewModel viewModel;
+    private CardStack mCardStack;
+    private CardsDataAdapter mCardAdapter;
     TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vote);
-        Button button = findViewById(R.id.button);
-        textView = findViewById(R.id.textView);
-        viewModel = new ViewModelProvider(this).get(VoteActivityViewModel.class);
+
+        //Cardstack indlæsning
+        mCardStack = (CardStack)findViewById(R.id.cardStackContainer);
+        mCardStack.setContentResource(R.layout.card);
+        mCardStack.setStackMargin(20);
+
+        //Cardstack Adapter
+        ArrayList<Recipe> recipes = new ArrayList<>();
+        try {
+            recipes.add(new Recipe("Tamiya", "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg", "Vegetarian"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        mCardAdapter = new CardsDataAdapter(getApplicationContext());
+        mCardAdapter.addAll(recipes);
+
+        mCardStack.setAdapter(mCardAdapter);
+
+       Button button = findViewById(R.id.noButton);
+      //textView = findViewById(R.id.textView);
+
         button.setOnClickListener(btn -> {
-            viewModel.searchRandomRecipe();
-            textView.setText("Jeg virker " + viewModel.getRandomRecipe().getValue());
+            getRandomRecipe();
+        });
+    }
+
+    public void getRandomRecipe() {
+        RecipeAPI recipeAPI = RecipeAPIConnection.getRecipeAPI();
+        Call<RecipeResponse> recipeResponseCall = recipeAPI.getRecipe();
+        recipeResponseCall.enqueue(new Callback<RecipeResponse>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<RecipeResponse> call, Response<RecipeResponse> response) {
+                if (response.isSuccessful()) {
+                    assert response.body() != null;
+                   // textView.setText(response.body().getRecipe());
+                }
+            }
+
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<RecipeResponse> call, Throwable t) {
+                Log.i("Retrofit", t.getMessage());
+            }
         });
     }
 
 }
-
