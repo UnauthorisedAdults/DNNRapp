@@ -41,6 +41,7 @@ public class CardsDataAdapter extends ArrayAdapter<Recipe> {
 
         //For at få et billede ind fra URL
         //FIXME: Det er vist lidt noget juks at gøre det med tråden sådan her?
+       /*
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -55,7 +56,7 @@ public class CardsDataAdapter extends ArrayAdapter<Recipe> {
             }
         }
         );
-        thread.start();
+        thread.start();*/
 
         return contentView;
     }
