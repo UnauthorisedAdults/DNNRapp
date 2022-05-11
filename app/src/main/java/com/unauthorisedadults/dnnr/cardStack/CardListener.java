@@ -1,10 +1,10 @@
 package com.unauthorisedadults.dnnr.cardStack;
 
-import android.widget.Toast;
-
 import com.wenchao.cardstack.CardStack;
 
 public class CardListener implements CardStack.CardEventListener {
+
+    private final CardEventHandler eventHandler = CardEventHandler.getInstance();
 
     @Override
     public boolean swipeEnd(int section, float distance) {
@@ -26,7 +26,9 @@ public class CardListener implements CardStack.CardEventListener {
 
     @Override
     public void discarded(int mIndex, int direction) {
+        if (direction == 1 || direction == 3) eventHandler.registerVote(mIndex);
     }
+
 
     @Override
     public void topCardTapped() {

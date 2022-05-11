@@ -49,5 +49,8 @@ dependencies {
     //Cardstack stuff
     implementation 'com.github.wenchaojiang:AndroidSwipeableCardStack:0.1.6'
    // implementation(name:'android-card-stack-0.1.6', ext:'aar')
+
+    //SignalR
+    implementation 'com.smartarmenia:dotnetcoresignalrclientjava:1.14'
 }
 
