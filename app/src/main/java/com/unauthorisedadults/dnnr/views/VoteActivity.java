@@ -36,7 +36,7 @@ public class VoteActivity extends AppCompatActivity {
         setContentView(R.layout.vote);
 
         //Cardstack indlæsning
-        mCardStack = (CardStack)findViewById(R.id.cardStackContainer);
+        mCardStack = (CardStack) findViewById(R.id.cardStackContainer);
         mCardStack.setContentResource(R.layout.card);
         mCardStack.setListener(new CardListener());
         mCardStack.setStackMargin(20);
@@ -44,9 +44,6 @@ public class VoteActivity extends AppCompatActivity {
         //Cardstack Adapter
         ArrayList<Recipe> recipes = new ArrayList<>();
         try {
-            recipes.add(new Recipe("Tamiya", "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg", "Vegetarian"));
-            recipes.add(new Recipe("Tamiya", "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg", "Vegetarian"));
-            recipes.add(new Recipe("Tamiya", "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg", "Vegetarian"));
             recipes.add(new Recipe("Tamiya", "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg", "Vegetarian"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -56,8 +53,8 @@ public class VoteActivity extends AppCompatActivity {
 
         mCardStack.setAdapter(mCardAdapter);
 
-       Button button = findViewById(R.id.noButton);
-      //textView = findViewById(R.id.textView);
+        Button button = findViewById(R.id.noButton);
+        //textView = findViewById(R.id.textView);
 
         button.setOnClickListener(btn -> {
             getRandomRecipe();
@@ -73,7 +70,10 @@ public class VoteActivity extends AppCompatActivity {
             public void onResponse(Call<RecipeResponse> call, Response<RecipeResponse> response) {
                 if (response.isSuccessful()) {
                     assert response.body() != null;
-                   // textView.setText(response.body().getRecipe());
+                    // textView.setText(response.body().getRecipe());
+                    Recipe recipe = response.body().getMeals().get(0);
+                    mCardAdapter.add(recipe);
+                    mCardAdapter.notifyDataSetChanged();
                 }
             }
 

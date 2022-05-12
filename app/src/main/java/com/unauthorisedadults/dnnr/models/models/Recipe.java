@@ -6,28 +6,28 @@ import java.net.URL;
 public class Recipe {
     // https://www.themealdb.com/api.php
 
-    private String name; //"strMeal"
-    private URL imgURL; // "strMealThumb"
-    private String category; //"strCategory"
+    private String strMeal; //"strMeal"
+    private URL strMealThumb; // "strMealThumb"
+    private String strCategory; //"strCategory"
 
-    public Recipe(String name, String imgURL, String category) throws MalformedURLException {
-        this.name = name;
-        this.imgURL = new URL(imgURL);
-        this.category = category;
+    public Recipe(String strMeal, String strMealThumb, String strCategory) throws MalformedURLException {
+        this.strMeal = strMeal;
+        this.strMealThumb = new URL(strMealThumb);
+        this.strCategory = strCategory;
     }
 
     public Recipe() {
     }
 
-    public String getName() {
-        return name;
+    public String getStrMeal() {
+        return strMeal;
     }
 
-    public URL getImgURL() {
-        return imgURL;
+    public URL getStrMealThumb() {
+        return strMealThumb;
     }
 
-    public String getCategory() {
-        return category;
+    public String getStrCategory() {
+        return strCategory;
     }
 }
