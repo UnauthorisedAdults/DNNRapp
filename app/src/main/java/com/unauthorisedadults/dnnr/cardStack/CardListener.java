@@ -26,7 +26,7 @@ public class CardListener implements CardStack.CardEventListener {
 
     @Override
     public void discarded(int mIndex, int direction) {
-        if (direction == 1 || direction == 3) eventHandler.registerVote(mIndex);
+
     }
 
 
