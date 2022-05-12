@@ -41,8 +41,8 @@ public class RecipeRepository {
             @Override
             public void onResponse(Call<RecipeResponse> call, Response<RecipeResponse> response) {
                 if (response.isSuccessful()) {
-                   //assert response.body() != null;
-                    randomRecipe.setValue(response.body().getRecipe());
+                    assert response.body() != null;
+                    randomRecipe.setValue(response.body().getMeals().get(0).getStrMeal());
                 }
             }
 

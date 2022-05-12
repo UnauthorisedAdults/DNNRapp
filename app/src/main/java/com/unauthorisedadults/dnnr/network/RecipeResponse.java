@@ -1,9 +1,13 @@
 package com.unauthorisedadults.dnnr.network;
 
-public class RecipeResponse {
-    private String idMeal;
-    private String strMeal;
-    private String strCategory;
+import com.unauthorisedadults.dnnr.models.models.Recipe;
 
-    public String getRecipe() {return strMeal;}
+import java.util.List;
+
+public class RecipeResponse {
+    private List<Recipe> meals;
+
+    public List<Recipe> getMeals() {
+        return meals;
+    }
 }
