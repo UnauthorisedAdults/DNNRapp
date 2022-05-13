@@ -1,7 +1,7 @@
 package com.unauthorisedadults.dnnr.services;
 
-import com.unauthorisedadults.dnnr.database.Database;
-import com.unauthorisedadults.dnnr.database.Idao;
+import com.unauthorisedadults.dnnr.data.Database;
+import com.unauthorisedadults.dnnr.data.Idao;
 
 import java.util.ArrayList;
 

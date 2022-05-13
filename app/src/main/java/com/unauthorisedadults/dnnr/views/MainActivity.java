@@ -1,5 +1,6 @@
 package com.unauthorisedadults.dnnr.views;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModel;
@@ -14,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.firebase.auth.FirebaseUser;
 import com.unauthorisedadults.dnnr.R;
 import com.unauthorisedadults.dnnr.models.models.GuestUser;
 import com.unauthorisedadults.dnnr.models.models.RegisteredUser;
@@ -22,6 +25,8 @@ import com.unauthorisedadults.dnnr.utilities.UTIL;
 import com.unauthorisedadults.dnnr.viewModels.MainViewModel;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,8 +35,7 @@ public class MainActivity extends AppCompatActivity {
     TextView username;
     MainViewModel mainViewModel;
     ImageView container;
-    String randomId;
-    User user;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,22 +49,14 @@ public class MainActivity extends AppCompatActivity {
         //getSupportActionBar().setIcon(R.drawable.ic_logo_smaller);
         getSupportActionBar().setTitle("");
 
+        checkSignedIn();
+
         startGroup = findViewById(R.id.StartGroup);
         joinGroup = findViewById(R.id.guest);
         username = findViewById(R.id.username);
-        usernameField = findViewById(R.id.usernameField);
-        passwordField = findViewById(R.id.PasswordField);
-        signIn = findViewById(R.id.signIn);
-       // container = findViewById(R.id.container);
 
-        randomId = assignRandomId();
-        username.setText(randomId);
+        // container = findViewById(R.id.container);
 
-        user = new GuestUser(randomId);
-    }
-
-    public String assignRandomId() {
-        return mainViewModel.assignRandomId();
     }
 
     /*Start group metoden sender brugeren til et group owner view. I dette view bliver gruppen oprettet
@@ -70,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(UTIL.USER, user);
         startActivity(intent);*/
         Context context = getApplicationContext();
-        Intent intent = new Intent(context,VoteActivity.class);
+        Intent intent = new Intent(context, VoteActivity.class);
         startActivity(intent);
     }
 
@@ -80,9 +76,23 @@ public class MainActivity extends AppCompatActivity {
         //TODO: Det er vist bare intent til at komme til en anden screen
     }
 
-    public void signIn(View view) {
-        user = mainViewModel.signIn(usernameField.getText().toString(), passwordField.getText().toString());
-        //TODO: signIn metode, og så giver det nogle ekstra muligheder på samme skærm, ved ikke lige
-        // hvordan man griber det an. Måske med fragments?
+
+    private void checkSignedIn() {
+        mainViewModel.getUser().observe(this, user -> {
+            if (user != null) {
+                if (user.getDisplayName() != null)
+                    username.setText(user.getDisplayName());
+                else if (user.isAnonymous())
+                    username.setText("guest");
+            } else
+                startLogin();
+        });
     }
+
+    private void startLogin() {
+        startActivity(new Intent(this, SignInActivity.class));
+
+    }
+
+
 }

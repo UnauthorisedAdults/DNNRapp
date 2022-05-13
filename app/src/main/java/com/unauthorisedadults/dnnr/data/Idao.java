@@ -1,4 +1,4 @@
-package com.unauthorisedadults.dnnr.database;
+package com.unauthorisedadults.dnnr.data;
 
 import java.util.ArrayList;
 

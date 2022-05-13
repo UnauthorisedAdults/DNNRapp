@@ -1,4 +1,4 @@
-package com.unauthorisedadults.dnnr.database;
+package com.unauthorisedadults.dnnr.data;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,8 +22,6 @@ public class Database implements Idao {
 
     public Database() {
     }
-
-
 
     @Override
     public ArrayList<String> getAnimals() {
