@@ -6,14 +6,16 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:contentDescription="TODO"
         android:src="@drawable/home_backdrop"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="TODO">
+        app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
         <TextView
             android:id="@+id/welcome"
@@ -111,5 +113,19 @@
             app:layout_constraintStart_toStartOf="@+id/usernameField"
             app:layout_constraintTop_toBottomOf="@+id/usernameField"
             tools:ignore="LabelFor" />
-    </ImageView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="156dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="645dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
