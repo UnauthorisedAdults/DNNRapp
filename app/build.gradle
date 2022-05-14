@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -54,10 +55,14 @@ dependencies {
 
     //Cardstack stuff
     implementation 'com.github.wenchaojiang:AndroidSwipeableCardStack:0.1.6'
-   // implementation(name:'android-card-stack-0.1.6', ext:'aar')
+    // implementation(name:'android-card-stack-0.1.6', ext:'aar')
 
     //SignalR
     implementation 'com.smartarmenia:dotnetcoresignalrclientjava:1.14'
+
+    //Firebase
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
+    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
 
     //Room
     implementation 'androidx.room:room-runtime:2.4.2'
@@ -69,5 +74,6 @@ dependencies {
 
     //Bluetooth
     implementation 'pub.devrel:easypermissions:3.0.0'
+
 }
 

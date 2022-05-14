@@ -3,11 +3,17 @@ package com.unauthorisedadults.dnnr.views;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -21,15 +27,23 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseUser;
 import com.unauthorisedadults.dnnr.R;
+import com.unauthorisedadults.dnnr.viewModels.MainViewModel;
 
 import java.util.Objects;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
 
+
 @RequiresApi(api = Build.VERSION_CODES.S)
 public class MainActivity extends AppCompatActivity {
+
+    TextView username;
+    MainViewModel mainViewModel;
+    ImageView container;
+    FirebaseUser user;
 
     public static final String[] BLUETOOTH_PERMISSIONS_S = {
             Manifest.permission.BLUETOOTH_SCAN,
@@ -43,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private NavController navController;
     private AppBarConfiguration appBarConfiguration;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
 
         setupNavigation();
         Bluetooth();
+
+        checkSignedIn();
     }
 
     private void setupNavigation() {
@@ -76,8 +93,20 @@ public class MainActivity extends AppCompatActivity {
 
             //Todo: Drawer menu actions...
             return false;
-        });
+    });
     }
+
+    /*Start group metoden sender brugeren til et group owner view. I dette view bliver gruppen oprettet
+     og brugeren bliver sat som group owner*/
+    public void startGroup(View view) {
+      /*  Intent intent = new Intent(MainActivity.this, StartGroupOwnerActivity.class);
+        intent.putExtra(UTIL.USER, user);
+        startActivity(intent);*/
+        Context context = getApplicationContext();
+        Intent intent = new Intent(context, VoteActivity.class);
+        startActivity(intent);
+
+        }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -112,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Bluetooth();
+
     }
 
     @Override
@@ -120,6 +150,27 @@ public class MainActivity extends AppCompatActivity {
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
 
+
+
+    private void checkSignedIn() {
+        mainViewModel.getUser().observe(this, user -> {
+            if (user != null) {
+                if (user.getDisplayName() != null)
+                    username.setText(user.getDisplayName());
+                else if (user.isAnonymous())
+                    username.setText("guest");
+            } else
+                startLogin();
+        });
+    }
+
+    private void startLogin() {
+        startActivity(new Intent(this, SignInActivity.class));
+
+    }
+
+
+    //Gør sådan at easy permissions kan tage over og sørger for permissions
     @SuppressLint("MissingPermission")
     private void Bluetooth() {
         adapter = BluetoothAdapter.getDefaultAdapter();
@@ -135,3 +186,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
