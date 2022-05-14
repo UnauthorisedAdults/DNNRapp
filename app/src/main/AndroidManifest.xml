@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.unauthorisedadults.dnnr" >
 
-   
+
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -24,7 +24,7 @@
         android:theme="@style/Theme.DNNR" >
         <activity
             android:name=".views.SignInActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".views.MainActivity"
             android:exported="true" >
