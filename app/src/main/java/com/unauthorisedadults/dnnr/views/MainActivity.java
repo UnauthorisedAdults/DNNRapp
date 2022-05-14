@@ -1,14 +1,28 @@
 package com.unauthorisedadults.dnnr.views;
 
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+
+import android.content.Context;
+=======
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
+
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+
+import com.firebase.ui.auth.AuthUI;
+import com.google.firebase.auth.FirebaseUser;
+=======
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,15 +35,30 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+
 import com.unauthorisedadults.dnnr.R;
 
+
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
+=======
 import java.util.Objects;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
 
+
 @RequiresApi(api = Build.VERSION_CODES.S)
 public class MainActivity extends AppCompatActivity {
+
+
+    Button startGroup, joinGroup, signIn;
+    EditText usernameField, passwordField;
+    TextView username;
+    MainViewModel mainViewModel;
+    ImageView container;
+    FirebaseUser user;
 
     public static final String[] BLUETOOTH_PERMISSIONS_S = {
             Manifest.permission.BLUETOOTH_SCAN,
@@ -42,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationDrawer;
     private NavController navController;
     private AppBarConfiguration appBarConfiguration;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +104,26 @@ public class MainActivity extends AppCompatActivity {
         navigationDrawer.setNavigationItemSelectedListener(v -> {
             int itemId = v.getItemId();
 
+        checkSignedIn();
+
+        startGroup = findViewById(R.id.StartGroup);
+        joinGroup = findViewById(R.id.guest);
+        username = findViewById(R.id.username);
+
+        // container = findViewById(R.id.container);
+
+    }
+
+    /*Start group metoden sender brugeren til et group owner view. I dette view bliver gruppen oprettet
+     og brugeren bliver sat som group owner*/
+    public void startGroup(View view) {
+      /*  Intent intent = new Intent(MainActivity.this, StartGroupOwnerActivity.class);
+        intent.putExtra(UTIL.USER, user);
+        startActivity(intent);*/
+        Context context = getApplicationContext();
+        Intent intent = new Intent(context, VoteActivity.class);
+        startActivity(intent);
+=======
             //Todo: Drawer menu actions...
             return false;
         });
@@ -112,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Bluetooth();
+
     }
 
     @Override
@@ -119,6 +170,28 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
+
+
+
+    private void checkSignedIn() {
+        mainViewModel.getUser().observe(this, user -> {
+            if (user != null) {
+                if (user.getDisplayName() != null)
+                    username.setText(user.getDisplayName());
+                else if (user.isAnonymous())
+                    username.setText("guest");
+            } else
+                startLogin();
+        });
+    }
+
+    private void startLogin() {
+        startActivity(new Intent(this, SignInActivity.class));
+
+    }
+
+
+}
 
     @SuppressLint("MissingPermission")
     private void Bluetooth() {
@@ -135,3 +208,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
