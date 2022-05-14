@@ -4,8 +4,6 @@ import com.wenchao.cardstack.CardStack;
 
 public class CardListener implements CardStack.CardEventListener {
 
-    private final CardEventHandler eventHandler = CardEventHandler.getInstance();
-
     @Override
     public boolean swipeEnd(int section, float distance) {
 

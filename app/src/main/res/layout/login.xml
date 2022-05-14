@@ -48,13 +48,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:text="Login"
-        app:layout_constraintBaseline_toBaselineOf="@+id/guest"
-        app:layout_constraintEnd_toStartOf="@+id/guest"
+        app:layout_constraintBaseline_toBaselineOf="@+id/joinGroup"
+        app:layout_constraintEnd_toStartOf="@+id/joinGroup"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@+id/PasswordField" />
 
     <Button
-        android:id="@+id/guest"
+        android:id="@+id/joinGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
