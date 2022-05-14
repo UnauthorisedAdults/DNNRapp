@@ -1,15 +1,10 @@
 package com.unauthorisedadults.dnnr.views;
 
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
-import android.content.Context;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,8 +16,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.firebase.ui.auth.AuthUI;
-import com.google.firebase.auth.FirebaseUser;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,14 +26,14 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseUser;
 import com.unauthorisedadults.dnnr.R;
 import com.unauthorisedadults.dnnr.viewModels.MainViewModel;
 
-import java.io.Serializable;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
+
 import pub.devrel.easypermissions.EasyPermissions;
 
 
@@ -102,12 +95,7 @@ public class MainActivity extends AppCompatActivity {
         navigationDrawer.setNavigationItemSelectedListener(v -> {
             int itemId = v.getItemId();
 
-        startGroup = findViewById(R.id.StartGroup);
-        joinGroup = findViewById(R.id.guest);
-        username = findViewById(R.id.username);
-
-        // container = findViewById(R.id.container);
-
+            //Todo: Drawer menu actions...
             return false;
     });
     }
@@ -121,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         Intent intent = new Intent(context, VoteActivity.class);
         startActivity(intent);
-            //Todo: Drawer menu actions...
-            //return false;
+
+
         }
 
     @Override
