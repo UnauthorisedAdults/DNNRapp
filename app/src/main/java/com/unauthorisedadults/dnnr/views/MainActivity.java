@@ -1,6 +1,5 @@
 package com.unauthorisedadults.dnnr.views;
 
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
@@ -41,9 +40,6 @@ import pub.devrel.easypermissions.EasyPermissions;
 @RequiresApi(api = Build.VERSION_CODES.S)
 public class MainActivity extends AppCompatActivity {
 
-
-    Button startGroup, joinGroup, signIn;
-    EditText usernameField, passwordField;
     TextView username;
     MainViewModel mainViewModel;
     ImageView container;

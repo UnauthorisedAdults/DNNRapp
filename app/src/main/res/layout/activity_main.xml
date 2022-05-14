@@ -23,7 +23,7 @@
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="user"
+        android:text="@string/user"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,8 +52,6 @@
 
             </com.google.android.material.appbar.AppBarLayout>
 
-
-=======
             <fragment
                 android:id="@+id/fragment_container"
                 android:name="androidx.navigation.fragment.NavHostFragment"
@@ -79,7 +77,5 @@
         app:headerLayout="@layout/drawer_header"
         app:menu="@menu/main_drawer"
         tools:ignore="MissingConstraints" />
-
-
 
 </androidx.drawerlayout.widget.DrawerLayout>
