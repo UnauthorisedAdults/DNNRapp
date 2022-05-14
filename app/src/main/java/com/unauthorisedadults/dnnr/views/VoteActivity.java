@@ -34,7 +34,7 @@ public class VoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vote);
-
+        
         //Cardstack indlæsning
         mCardStack = (CardStack) findViewById(R.id.cardStackContainer);
         mCardStack.setContentResource(R.layout.card);

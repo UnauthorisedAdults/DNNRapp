@@ -1,88 +1,137 @@
 package com.unauthorisedadults.dnnr.views;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.bluetooth.BluetoothAdapter;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-
+import com.google.android.material.navigation.NavigationView;
 import com.unauthorisedadults.dnnr.R;
-import com.unauthorisedadults.dnnr.models.models.GuestUser;
-import com.unauthorisedadults.dnnr.models.models.RegisteredUser;
-import com.unauthorisedadults.dnnr.models.models.User;
-import com.unauthorisedadults.dnnr.utilities.UTIL;
-import com.unauthorisedadults.dnnr.viewModels.MainViewModel;
 
-import java.io.Serializable;
+import java.util.Objects;
 
+import pub.devrel.easypermissions.EasyPermissions;
+
+
+@RequiresApi(api = Build.VERSION_CODES.S)
 public class MainActivity extends AppCompatActivity {
 
-    Button startGroup, joinGroup, signIn;
-    EditText usernameField, passwordField;
-    TextView username;
-    MainViewModel mainViewModel;
-    ImageView container;
-    String randomId;
-    User user;
+    public static final String[] BLUETOOTH_PERMISSIONS_S = {
+            Manifest.permission.BLUETOOTH_SCAN,
+            Manifest.permission.BLUETOOTH_CONNECT
+    };
+
+    private BluetoothAdapter adapter;
+
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationDrawer;
+    private NavController navController;
+    private AppBarConfiguration appBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationDrawer = findViewById(R.id.drawer_nav_view);
+        getWindow().setStatusBarColor(getColor(R.color.BG_Red));
 
-        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        setupNavigation();
+        Bluetooth();
+    }
 
+    private void setupNavigation() {
         Toolbar toolbar = findViewById(R.id.DNNR_Toolbar);
         setSupportActionBar(toolbar);
-        //getSupportActionBar().setIcon(R.drawable.ic_logo_smaller);
-        getSupportActionBar().setTitle("");
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.home_fragment)
+                .setOpenableLayout(drawerLayout)
+                .build();
+        navController = Navigation.findNavController(this, R.id.fragment_container);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(navigationDrawer, navController);
 
-        startGroup = findViewById(R.id.StartGroup);
-        joinGroup = findViewById(R.id.guest);
-        username = findViewById(R.id.username);
-        usernameField = findViewById(R.id.usernameField);
-        passwordField = findViewById(R.id.PasswordField);
-        signIn = findViewById(R.id.signIn);
-       // container = findViewById(R.id.container);
-
-        randomId = assignRandomId();
-        username.setText(randomId);
-
-        user = new GuestUser(randomId);
+        setupDrawerItems();
     }
 
-    public String assignRandomId() {
-        return mainViewModel.assignRandomId();
+    private void setupDrawerItems() {
+        navigationDrawer.setNavigationItemSelectedListener(v -> {
+            int itemId = v.getItemId();
+
+            //Todo: Drawer menu actions...
+            return false;
+        });
     }
 
-    /*Start group metoden sender brugeren til et group owner view. I dette view bliver gruppen oprettet
-     og brugeren bliver sat som group owner*/
-    public void startGroup(View view) {
-      /*  Intent intent = new Intent(MainActivity.this, StartGroupOwnerActivity.class);
-        intent.putExtra(UTIL.USER, user);
-        startActivity(intent);*/
-        Context context = getApplicationContext();
-        Intent intent = new Intent(context,VoteActivity.class);
-        startActivity(intent);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.appbar, menu);
+        return true;
     }
 
-    /*Skal sende bruger til et group member view. Her skal brugeren føjes til listen over medlemmer
-    i gruppen. Hele brugeren skal sendes med intent her også. */
-    public void joinGroup(View view) {
-        //TODO: Det er vist bare intent til at komme til en anden screen
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        //TODO: Appbar button functionality made here!
+
+        return super.onOptionsItemSelected(item);
     }
 
-    public void signIn(View view) {
-        user = mainViewModel.signIn(usernameField.getText().toString(), passwordField.getText().toString());
-        //TODO: signIn metode, og så giver det nogle ekstra muligheder på samme skærm, ved ikke lige
-        // hvordan man griber det an. Måske med fragments?
+    @Override
+    public boolean onSupportNavigateUp() {
+        navController = Navigation.findNavController(this, R.id.fragment_container);
+        return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START))
+            drawerLayout.closeDrawer(GravityCompat.START);
+        else
+            super.onBackPressed();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Bluetooth();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
+    @SuppressLint("MissingPermission")
+    private void Bluetooth() {
+        adapter = BluetoothAdapter.getDefaultAdapter();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (!EasyPermissions.hasPermissions(this, BLUETOOTH_PERMISSIONS_S)) {
+                EasyPermissions.requestPermissions(this, "Permissions Required", 1, BLUETOOTH_PERMISSIONS_S);
+            }
+            if (!adapter.isEnabled()) {
+                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivity(enableBtIntent);
+            }
+        }
     }
 }
