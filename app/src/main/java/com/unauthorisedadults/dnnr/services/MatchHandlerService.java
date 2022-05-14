@@ -12,9 +12,7 @@ import com.unauthorisedadults.dnnr.models.AffirmativeSwipe;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MatchHandlerService {
     private List<String> participants;
@@ -82,7 +80,8 @@ public class MatchHandlerService {
     }
 
     public List<AffirmativeSwipe> topAffirmatives() {
-        Collections.sort(affirmativeList, Comparator.comparing(AffirmativeSwipe::getVotes).reversed());
+        Collections.sort(affirmativeList);
+        Collections.reverse(affirmativeList);
 
         return affirmativeList;
     }
