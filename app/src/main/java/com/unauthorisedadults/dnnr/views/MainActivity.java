@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationDrawer = findViewById(R.id.drawer_nav_view);
         getWindow().setStatusBarColor(getColor(R.color.BG_Red));
+        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         setupNavigation();
         Bluetooth();
@@ -155,10 +157,10 @@ public class MainActivity extends AppCompatActivity {
     private void checkSignedIn() {
         mainViewModel.getUser().observe(this, user -> {
             if (user != null) {
-                if (user.getDisplayName() != null)
-                    username.setText(user.getDisplayName());
-                else if (user.isAnonymous())
-                    username.setText("guest");
+//                if (user.getDisplayName() != null)
+//                    username.setText(user.getDisplayName());
+//                else if (user.isAnonymous())
+//                    username.setText("guest");
             } else
                 startLogin();
         });
