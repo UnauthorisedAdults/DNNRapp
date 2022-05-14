@@ -26,5 +26,6 @@
     <string name="n">N</string>
     <string name="r">R</string>
     <string name="user">user</string>
+    <string name="sign_out">Sign out</string>
 
 </resources>
