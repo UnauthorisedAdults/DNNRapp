@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "381577867627",
+    "project_id": "dnnrapp-d6fe6",
+    "storage_bucket": "dnnrapp-d6fe6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381577867627:android:114b28d80ff75c9ac95c2e",
+        "android_client_info": {
+          "package_name": "com.unauthorisedadults.dnnr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381577867627-3emn0nm9bkv5saqhe91190ccnffknu8l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL3OIhJoZ0MyoxCKMpAMTJGeUgS21cnzo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381577867627-3emn0nm9bkv5saqhe91190ccnffknu8l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

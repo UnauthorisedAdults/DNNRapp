@@ -110,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(context, VoteActivity.class);
         startActivity(intent);
 
-
         }
 
     @Override

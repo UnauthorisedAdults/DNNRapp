@@ -17,6 +17,7 @@
         <entry key="..\:/Users/LineK/AndroidStudioProjects/DNNRapp/app/src/main/res/layout/card.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/LineK/AndroidStudioProjects/DNNRapp/app/src/main/res/layout/login.xml" value="0.259963768115942" />
         <entry key="..\:/Users/LineK/AndroidStudioProjects/DNNRapp/app/src/main/res/layout/vote.xml" value="0.2463768115942029" />
+        <entry key="..\:/Users/LineK/AndroidStudioProjects/DNNRapp/app/src/main/res/menu/appbar.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/fakim/AndroidStudioProjects/DNNRapp/app/src/main/res/drawable/home_backdrop.xml" value="0.1495" />
         <entry key="..\:/Users/fakim/AndroidStudioProjects/DNNRapp/app/src/main/res/drawable/ic_baseline_view_week_24.xml" value="0.2625" />
         <entry key="..\:/Users/fakim/AndroidStudioProjects/DNNRapp/app/src/main/res/drawable/ic_favorite.xml" value="0.2625" />
@@ -34,12 +35,8 @@
         <entry key="..\:/Users/fakim/AndroidStudioProjects/DNNRapp/app/src/main/res/menu/appbar.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/fakim/AndroidStudioProjects/DNNRapp/app/src/main/res/menu/main_drawer.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/fakim/AndroidStudioProjects/DNNRapp/app/src/main/res/menu/main_menu.xml" value="0.2942708333333333" />
-
       </map>
     </option>
-  </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/home_activity.xml" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
