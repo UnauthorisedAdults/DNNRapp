@@ -9,8 +9,6 @@ import com.unauthorisedadults.dnnr.network.RecipeRepository;
 public class VoteActivityViewModel extends ViewModel {
     RecipeRepository repository;
 
-    private final CardEventHandler eventHandler = CardEventHandler.getInstance();
-
     public VoteActivityViewModel() {
         repository = RecipeRepository.getInstance();
     }

@@ -5,6 +5,6 @@
     <color name="ligthGrey">#D7DBDD</color>
     <color name="midGrey">#909497</color>
     <color name="lightRed">#E74C3C</color>
-    <color name="Red">#C0392B</color>
+    <color name="BG_Red">#C0392B</color>
 
 </resources>

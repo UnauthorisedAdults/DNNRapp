@@ -19,9 +19,9 @@ public class GuestNameService {
 //FIXME: Der kommer ind i mellem fejl her med index out of bounds 5
     public String getRandomId() {
         int range = animals.size() + 1;
-        String animal = animals.get((int) (Math.random() * range));
+        String animal = animals.get((int) Math.floor(Math.random() * range));
         range = colors.size() + 1;
-        String color = colors.get((int) (Math.random() * range));
+        String color = colors.get((int) Math.floor(Math.random() * range));
 
         String Id = color + " " + animal;
 
