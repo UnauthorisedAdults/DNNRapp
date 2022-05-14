@@ -12,6 +12,7 @@
         <menu>
             <item
                 android:id="@+id/drawer_settings"
+                android:icon="@drawable/ic_round_settings_24"
                 android:title="@string/settings"/>
         </menu>
     </item>
