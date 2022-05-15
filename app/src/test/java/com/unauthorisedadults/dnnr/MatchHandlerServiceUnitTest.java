@@ -12,7 +12,7 @@ import java.util.List;
 
 public class MatchHandlerServiceUnitTest {
 
-    // Test der viser man kan tilføje en deltager til en deltagerliste
+   /* // Test der viser man kan tilføje en deltager til en deltagerliste
     @Test
     public void addParticipantsToParticipantsList()
     {
@@ -128,5 +128,5 @@ public class MatchHandlerServiceUnitTest {
 
         assertEquals(affirmatives.get(4).getId(), topList.get(4).getId());
         assertEquals(affirmatives.get(4).getVotes(), topList.get(4).getVotes());
-    }
+    } */
 }
