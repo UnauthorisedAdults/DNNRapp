@@ -8,6 +8,8 @@
  */
 package com.unauthorisedadults.dnnr.services;
 
+import androidx.annotation.VisibleForTesting;
+
 import com.unauthorisedadults.dnnr.models.AffirmativeSwipe;
 
 import java.util.ArrayList;
@@ -16,9 +18,10 @@ import java.util.List;
 
 public class MatchHandlerService {
 
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     private static MatchHandlerService instance;
-    private final List<String> participants;
-    private final List<AffirmativeSwipe> affirmativeList;
+    private List<String> participants;
+    private List<AffirmativeSwipe> affirmativeList;
     private int matchId;
 
     private MatchHandlerService() {
@@ -38,11 +41,7 @@ public class MatchHandlerService {
     }
 
     public List<String> getParticipants() {
-        List<String> returnList = new ArrayList<>();
-
-        returnList.addAll(participants);
-
-        return returnList;
+        return new ArrayList<>(participants);
     }
 
     public void addAffirmative(int id) {
@@ -92,5 +91,13 @@ public class MatchHandlerService {
         Collections.reverse(affirmativeList);
 
         return affirmativeList;
+    }
+
+    public void clearListsForTesting() {
+        /*
+         *  Dette er nok ikke så smart, men nu kan der testes på denne singleton
+         */
+        participants = new ArrayList<>();
+        affirmativeList = new ArrayList<>();
     }
 }
