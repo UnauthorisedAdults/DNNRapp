@@ -1,14 +1,13 @@
 package com.unauthorisedadults.dnnr.views;
 
-import android.app.Application;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -16,10 +15,10 @@ import com.firebase.ui.auth.AuthUI;
 import com.unauthorisedadults.dnnr.R;
 import com.unauthorisedadults.dnnr.viewModels.SignInViewModel;
 
-import java.security.PrivateKey;
 import java.util.Arrays;
 import java.util.List;
 
+@RequiresApi(api = Build.VERSION_CODES.S)
 public class SignInActivity extends AppCompatActivity {
 
     private SignInViewModel viewModel;
@@ -57,6 +56,7 @@ public class SignInActivity extends AppCompatActivity {
 
     public void signIn() {
         List<AuthUI.IdpConfig> providers = Arrays.asList(
+                new AuthUI.IdpConfig.GoogleBuilder().build(),
                 new AuthUI.IdpConfig.EmailBuilder().build(),
                 new AuthUI.IdpConfig.AnonymousBuilder().build()
         );
