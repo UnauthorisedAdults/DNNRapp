@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.unauthorisedadults.dnnr.R;
 import com.unauthorisedadults.dnnr.cardStack.CardListener;
@@ -14,6 +15,7 @@ import com.unauthorisedadults.dnnr.models.models.Recipe;
 import com.unauthorisedadults.dnnr.network.RecipeAPI;
 import com.unauthorisedadults.dnnr.network.RecipeAPIConnection;
 import com.unauthorisedadults.dnnr.network.RecipeResponse;
+import com.unauthorisedadults.dnnr.viewModels.VoteActivityViewModel;
 import com.wenchao.cardstack.CardStack;
 
 import java.net.MalformedURLException;
@@ -28,17 +30,20 @@ import retrofit2.internal.EverythingIsNonNull;
 public class VoteActivity extends AppCompatActivity {
     private CardStack mCardStack;
     private CardsDataAdapter mCardAdapter;
+    private VoteActivityViewModel viewModel;
     TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vote);
-        
+
+        viewModel = new ViewModelProvider(this).get(VoteActivityViewModel.class);
+
         //Cardstack indlæsning
         mCardStack = (CardStack) findViewById(R.id.cardStackContainer);
         mCardStack.setContentResource(R.layout.card);
-        mCardStack.setListener(new CardListener());
+        mCardStack.setListener(new CardListener(viewModel));
         mCardStack.setStackMargin(20);
 
         //Cardstack Adapter

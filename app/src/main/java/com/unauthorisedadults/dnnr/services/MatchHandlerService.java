@@ -15,11 +15,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class MatchHandlerService {
-    private List<String> participants;
-    private List<AffirmativeSwipe> affirmativeList;
+
+    private static MatchHandlerService instance;
+    private final List<String> participants;
+    private final List<AffirmativeSwipe> affirmativeList;
     private int matchId;
 
-    public MatchHandlerService() {
+    private MatchHandlerService() {
         participants = new ArrayList<>();
         affirmativeList = new ArrayList<>();
     }
@@ -28,6 +30,12 @@ public class MatchHandlerService {
         participants.add(participant);
     }
 
+    public static MatchHandlerService getInstance() {
+        if (instance == null) {
+            instance = new MatchHandlerService();
+        }
+        return instance;
+    }
 
     public List<String> getParticipants() {
         List<String> returnList = new ArrayList<>();
