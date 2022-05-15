@@ -75,5 +75,8 @@ dependencies {
     //Bluetooth
     implementation 'pub.devrel:easypermissions:3.0.0'
 
+    //Nearby connections
+    implementation 'com.google.android.gms:play-services-nearby:18.1.0'
+
 }
 
