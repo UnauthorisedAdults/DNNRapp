@@ -92,10 +92,22 @@ public class MainActivity extends AppCompatActivity {
     private void setupDrawerItems() {
         navigationDrawer.setNavigationItemSelectedListener(v -> {
             int itemId = v.getItemId();
+            switch (itemId){
+                case R.id.drawer_signout:
+                    signOut();
+                    break;
+                default:
+                    break;
+
+            }
 
             //Todo: Drawer menu actions...
             return false;
     });
+    }
+
+    private void signOut() {
+        mainViewModel.signOut();
     }
 
     /*Start group metoden sender brugeren til et group owner view. I dette view bliver gruppen oprettet
@@ -168,7 +180,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void startLogin() {
         startActivity(new Intent(this, SignInActivity.class));
-
     }
 
 

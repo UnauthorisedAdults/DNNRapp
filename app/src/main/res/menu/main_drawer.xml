@@ -19,5 +19,5 @@
 
     <item android:id="@+id/drawer_signout"
         android:icon="@drawable/ic_round_exit_to_app_24"
-        android:title="@string/sign_out"/>
+        android:title="@string/sign_out" />
 </menu>
