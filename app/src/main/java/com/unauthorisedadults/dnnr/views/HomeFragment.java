@@ -9,12 +9,14 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.unauthorisedadults.dnnr.R;
 
 public class HomeFragment extends Fragment {
 
-    Button signIn, joinGroup, startGroup;
+    private NavController navController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,25 +31,18 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
+        navController = Navigation.findNavController(view);
 
 
         setupButtons(view);
     }
 
     private void setupButtons(View view) {
-        signIn = view.findViewById(R.id.signIn);
-        signIn.setOnClickListener(btn -> signIn());
-
-        joinGroup = view.findViewById(R.id.joinGroup);
+        Button joinGroup = view.findViewById(R.id.joinGroup);
         joinGroup.setOnClickListener(btn -> joinGroup());
 
-        startGroup = view.findViewById(R.id.StartGroup);
+        Button startGroup = view.findViewById(R.id.StartGroup);
         startGroup.setOnClickListener(btn -> startGroup());
-    }
-
-    private void signIn() {
-
     }
 
     private void joinGroup() {
@@ -55,7 +50,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void startGroup() {
-
+        navController.navigate(R.id.group_fragment);
     }
 
 }

@@ -6,5 +6,6 @@
     <color name="midGrey">#909497</color>
     <color name="lightRed">#E74C3C</color>
     <color name="BG_Red">#C0392B</color>
+    <color name="BT_Blue">#0083fd</color>
 
 </resources>
