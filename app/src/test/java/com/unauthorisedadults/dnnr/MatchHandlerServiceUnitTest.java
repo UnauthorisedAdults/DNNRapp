@@ -1,10 +1,13 @@
 package com.unauthorisedadults.dnnr;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import com.unauthorisedadults.dnnr.models.AffirmativeSwipe;
 import com.unauthorisedadults.dnnr.services.MatchHandlerService;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -12,11 +15,20 @@ import java.util.List;
 
 public class MatchHandlerServiceUnitTest {
 
-   /* // Test der viser man kan tilføje en deltager til en deltagerliste
+    MatchHandlerService matchHandlerServiceService;
+
+    @Before
+    public void beforeTests()
+    {
+        matchHandlerServiceService = MatchHandlerService.getInstance();
+    }
+
+   // Test der viser man kan tilføje en deltager til en deltagerliste
     @Test
     public void addParticipantsToParticipantsList()
     {
-        MatchHandlerService matchHandlerServiceService = new MatchHandlerService();
+        //MatchHandlerService matchHandlerServiceService = MatchHandlerService.getInstance();'
+        matchHandlerServiceService.clearListsForTesting();
         String participant = "Jack";
 
         matchHandlerServiceService.addParticipant(participant);
@@ -28,7 +40,8 @@ public class MatchHandlerServiceUnitTest {
     @Test
     public void noMatchWhenLessThanTwoParticipants()
     {
-        MatchHandlerService matchHandlerServiceService = new MatchHandlerService();
+        //MatchHandlerService matchHandlerServiceService = MatchHandlerService.getInstance();
+        matchHandlerServiceService.clearListsForTesting();
 
         String participant = "Jack";
 
@@ -38,14 +51,15 @@ public class MatchHandlerServiceUnitTest {
 
         boolean isMatch = matchHandlerServiceService.isMatch();
 
-        assertEquals(false, isMatch);
+        assertFalse(isMatch);
     }
 
     //  Test der viser match mellem deltagerne
     @Test
     public void matchFoundBetweenTwoParticipants()
     {
-        MatchHandlerService matchHandlerServiceService = new MatchHandlerService();
+        //MatchHandlerService matchHandlerServiceService = MatchHandlerService.getInstance();
+        matchHandlerServiceService.clearListsForTesting();
 
         String participant1 = "Jack";
         String participant2 = "Black";
@@ -61,7 +75,8 @@ public class MatchHandlerServiceUnitTest {
         boolean isMatch = matchHandlerServiceService.isMatch();
         int matchId = matchHandlerServiceService.getMatchId();
 
-        assertEquals(true, isMatch);
+        //assertEquals(true, isMatch);
+        assertTrue(isMatch);
         assertEquals(42, matchId);
     }
 
@@ -69,7 +84,8 @@ public class MatchHandlerServiceUnitTest {
     @Test
     public void returnATop5List()
     {
-        MatchHandlerService matchHandlerServiceService = new MatchHandlerService();
+        //MatchHandlerService matchHandlerServiceService = MatchHandlerService.getInstance();
+        matchHandlerServiceService.clearListsForTesting();
 
         String participant1 = "Jack";
         String participant2 = "Black";
@@ -128,5 +144,5 @@ public class MatchHandlerServiceUnitTest {
 
         assertEquals(affirmatives.get(4).getId(), topList.get(4).getId());
         assertEquals(affirmatives.get(4).getVotes(), topList.get(4).getVotes());
-    } */
+    }
 }
