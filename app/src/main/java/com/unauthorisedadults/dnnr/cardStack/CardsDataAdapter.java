@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.core.os.HandlerCompat;
 
+import com.bumptech.glide.Glide;
 import com.unauthorisedadults.dnnr.R;
 import com.unauthorisedadults.dnnr.models.models.Recipe;
 
@@ -46,16 +47,7 @@ public class CardsDataAdapter extends ArrayAdapter<Recipe> {
 
         //For at få et billede ind fra URL
 
-        executorService.execute(() -> {
-            InputStream inputStream = null;
-            try {
-                inputStream = (InputStream) CardsDataAdapter.this.getItem(position).getStrMealThumb().getContent();
-                Drawable drawable = createFromStream(inputStream, null);
-                mainThreadHandler.post(() -> thumbnail.setImageDrawable(drawable));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+        Glide.with(contentView).load(getItem(position).getStrMealThumb()).into(thumbnail);
 
         return contentView;
     }
