@@ -1,8 +1,9 @@
-package com.unauthorisedadults.dnnr.services;
+package com.unauthorisedadults.dnnr.services.nearbyConnect;
 
 import static com.google.android.gms.nearby.connection.Strategy.P2P_STAR;
 import static com.unauthorisedadults.dnnr.utilities.UTIL.SERVICE_ID;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.DialogInterface;
 
@@ -17,6 +18,7 @@ import com.google.android.gms.nearby.connection.ConnectionsStatusCodes;
 import com.google.android.gms.nearby.connection.DiscoveredEndpointInfo;
 import com.google.android.gms.nearby.connection.DiscoveryOptions;
 import com.google.android.gms.nearby.connection.EndpointDiscoveryCallback;
+import com.google.android.gms.nearby.connection.PayloadCallback;
 import com.google.android.gms.nearby.connection.Strategy;
 import com.unauthorisedadults.dnnr.data.UserRepository;
 
@@ -25,7 +27,13 @@ public class ConnectNearby {
 
     Context context;
     UserRepository userRepository;
+    PayloadCallback payloadCallback;
 
+    public ConnectNearby(Application app) {
+        this.context = app;
+        userRepository = UserRepository.getInstance(app);
+        payloadCallback = new ReceiveBytePayload();
+    }
 
     private void startAdvertising() {
         AdvertisingOptions advertisingOptions =
@@ -92,6 +100,8 @@ public class ConnectNearby {
                 }
             };
 
+    //Metoden herunder gør at admin kan modtage connections, men også at man skal godkende de forbindelser der kommer ind
+    // Det er best-practice at man skal godkende de forbindelse der kommer ind når man bruger nearby connections
     private final ConnectionLifecycleCallback connectionLifecycleCallback =
             new ConnectionLifecycleCallback() {
                 @Override
@@ -119,6 +129,7 @@ public class ConnectNearby {
                     switch (result.getStatus().getStatusCode()) {
                         case ConnectionsStatusCodes.STATUS_OK:
                             // We're connected! Can now start sending and receiving data.
+                            //TODO: tilføj den nye bruger til listen over gruppemedlemmer
                             break;
                         case ConnectionsStatusCodes.STATUS_CONNECTION_REJECTED:
                             // The connection was rejected by one or both sides.
@@ -135,6 +146,7 @@ public class ConnectNearby {
                 public void onDisconnected(String endpointId) {
                     // We've been disconnected from this endpoint. No more data can be
                     // sent or received.
+                    //TODO: stop aktiviteten hvis forbindelsen afbrydes
                 }
             };
 }
