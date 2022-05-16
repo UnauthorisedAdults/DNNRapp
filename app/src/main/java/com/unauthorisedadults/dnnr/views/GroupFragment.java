@@ -1,9 +1,11 @@
 package com.unauthorisedadults.dnnr.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +22,7 @@ public class GroupFragment extends Fragment {
     private StartGroupViewModel viewModel;
     private TextView participantList;
     private MaterialButton connectButton;
+    private Button startButton;
 
     @Nullable
     @Override
@@ -33,6 +36,7 @@ public class GroupFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(StartGroupViewModel.class);
         participantList = view.findViewById(R.id.group_participants);
         connectButton = view.findViewById(R.id.group_connect);
+        startButton = view.findViewById(R.id.group_start);
         viewModel.registerUser();
 
         viewModel.getParticipantNames().observe(getViewLifecycleOwner(), names -> {
@@ -44,9 +48,16 @@ public class GroupFragment extends Fragment {
             }
         });
 
-        connectButton.setOnClickListener(btn -> {
-            viewModel.registerUser();
+        setupButtons();
+    }
 
-        });
+    private void setupButtons() {
+        connectButton.setOnClickListener(btn -> viewModel.registerUser());
+        startButton.setOnClickListener(btn -> startButtonAction());
+    }
+
+    private void startButtonAction() {
+        Intent intent = new Intent(getActivity(), VoteActivity.class);
+        startActivity(intent);
     }
 }
