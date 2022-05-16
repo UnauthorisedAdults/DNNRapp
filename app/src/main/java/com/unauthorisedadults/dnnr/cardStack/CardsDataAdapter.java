@@ -19,6 +19,7 @@ import com.unauthorisedadults.dnnr.models.models.Recipe;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -57,6 +58,11 @@ public class CardsDataAdapter extends ArrayAdapter<Recipe> {
         });
 
         return contentView;
+    }
+
+    public void setRecipe(Recipe recipe) {
+        add(recipe);
+        notifyDataSetChanged();
     }
 
      private static class ViewHolder {

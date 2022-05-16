@@ -8,7 +8,7 @@
  */
 package com.unauthorisedadults.dnnr.services;
 
-import androidx.annotation.VisibleForTesting;
+import androidx.annotation.RestrictTo;
 
 import com.unauthorisedadults.dnnr.models.AffirmativeSwipe;
 
@@ -18,7 +18,6 @@ import java.util.List;
 
 public class MatchHandlerService {
 
-    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     private static MatchHandlerService instance;
     private List<String> participants;
     private List<AffirmativeSwipe> affirmativeList;
@@ -93,10 +92,8 @@ public class MatchHandlerService {
         return affirmativeList;
     }
 
+    @RestrictTo(RestrictTo.Scope.TESTS)
     public void clearListsForTesting() {
-        /*
-         *  Dette er nok ikke så smart, men nu kan der testes på denne singleton
-         */
         participants = new ArrayList<>();
         affirmativeList = new ArrayList<>();
     }

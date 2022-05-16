@@ -43,7 +43,7 @@ public class VoteActivity extends AppCompatActivity {
         //Cardstack indlæsning
         mCardStack = (CardStack) findViewById(R.id.cardStackContainer);
         mCardStack.setContentResource(R.layout.card);
-        mCardStack.setListener(new CardListener(viewModel));
+        //mCardStack.setListener(new CardListener(viewModel));
         mCardStack.setStackMargin(20);
 
         //Cardstack Adapter

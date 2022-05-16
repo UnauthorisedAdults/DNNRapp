@@ -1,20 +1,20 @@
 package com.unauthorisedadults.dnnr.cardStack;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import com.unauthorisedadults.dnnr.services.MatchHandlerService;
-import com.unauthorisedadults.dnnr.viewModels.VoteActivityViewModel;
+import com.unauthorisedadults.dnnr.viewModels.VoteViewModel;
 import com.wenchao.cardstack.CardStack;
 
 public class CardListener implements CardStack.CardEventListener {
 
     private final MatchHandlerService matchHandlerService = MatchHandlerService.getInstance();
-    private final VoteActivityViewModel viewModel;
+    private final VoteViewModel viewModel;
 
-    public CardListener(VoteActivityViewModel viewModel)
+    private int votesMade;
+
+    public CardListener(VoteViewModel viewModel)
     {
-        super();
         this.viewModel = viewModel;
+        votesMade = 0;
     }
 
     @Override
@@ -36,14 +36,22 @@ public class CardListener implements CardStack.CardEventListener {
 
     @Override
     public void discarded(int mIndex, int direction) {
+        votesMade++;
         if (direction == 1 || direction == 3)
         {
             matchHandlerService.addAffirmative(mIndex);
-            if (matchHandlerService.isMatch())
-            {
-                viewModel.matched(matchHandlerService.getMatchId());
-            }
         }
+
+        if (matchHandlerService.isMatch())
+        {
+            viewModel.matched(matchHandlerService.getMatchId());
+        }
+
+        if (votesMade % 9 == 0)
+        {
+            viewModel.requestRecipes();
+        }
+        System.out.println("****** INDEX: " + mIndex + " ****** TOTALVOTES: " + votesMade + " ******");
     }
 
     @Override

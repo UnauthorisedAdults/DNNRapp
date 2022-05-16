@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.button.MaterialButton;
 import com.unauthorisedadults.dnnr.R;
@@ -20,6 +22,8 @@ import com.unauthorisedadults.dnnr.viewModels.StartGroupViewModel;
 public class GroupFragment extends Fragment {
 
     private StartGroupViewModel viewModel;
+    private NavController navController;
+
     private TextView participantList;
     private MaterialButton connectButton;
     private Button startButton;
@@ -33,6 +37,7 @@ public class GroupFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
         viewModel = new ViewModelProvider(this).get(StartGroupViewModel.class);
         participantList = view.findViewById(R.id.group_participants);
         connectButton = view.findViewById(R.id.group_connect);
@@ -43,7 +48,7 @@ public class GroupFragment extends Fragment {
             if (!names.isEmpty()) {
                 participantList.setText("");
                 for (String name : names) {
-                    participantList.append(name);
+                    participantList.append(name + "\n");
                 }
             }
         });
@@ -57,7 +62,6 @@ public class GroupFragment extends Fragment {
     }
 
     private void startButtonAction() {
-        Intent intent = new Intent(getActivity(), VoteActivity.class);
-        startActivity(intent);
+        navController.navigate(R.id.vote_fragment);
     }
 }

@@ -4,9 +4,7 @@ import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
 
-import com.unauthorisedadults.dnnr.cardStack.CardEventHandler;
 import com.unauthorisedadults.dnnr.network.RecipeRepository;
 
 public class VoteActivityViewModel extends AndroidViewModel {
@@ -18,7 +16,6 @@ public class VoteActivityViewModel extends AndroidViewModel {
     }
 
     public void matched(int index) {
-
     }
 
     public LiveData<String> getRandomRecipe() {
