@@ -27,5 +27,13 @@
     <string name="r">R</string>
     <string name="user">user</string>
     <string name="sign_out">Sign out</string>
+    <string name="placeholder">-placeholder-</string>
+    <string name="start">Start</string>
+    <string name="connect">connect</string>
+    <string name="group_setup">Group setup</string>
+    <string name="allergies">Allergies</string>
+    <string name="preferences">Preferences</string>
+    <string name="filters">Filters</string>
+    <string name="participants">Participants</string>
 
 </resources>

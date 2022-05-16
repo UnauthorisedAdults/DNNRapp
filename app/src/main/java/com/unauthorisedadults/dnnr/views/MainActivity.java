@@ -10,10 +10,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -28,7 +24,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseUser;
 import com.unauthorisedadults.dnnr.R;
 import com.unauthorisedadults.dnnr.viewModels.MainViewModel;
 
@@ -36,15 +31,10 @@ import java.util.Objects;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
-
-
 @RequiresApi(api = Build.VERSION_CODES.S)
 public class MainActivity extends AppCompatActivity {
 
-    TextView username;
     MainViewModel mainViewModel;
-    ImageView container;
-    FirebaseUser user;
 
     public static final String[] BLUETOOTH_PERMISSIONS_S = {
             Manifest.permission.BLUETOOTH_SCAN,

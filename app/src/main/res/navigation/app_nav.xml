@@ -10,4 +10,10 @@
         android:name="com.unauthorisedadults.dnnr.views.HomeFragment"
         android:label="@string/app_name"
         tools:layout="@layout/home_frag"/>
+
+    <fragment
+        android:id="@+id/group_fragment"
+        android:name="com.unauthorisedadults.dnnr.views.GroupFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/group_frag"/>
 </navigation>
