@@ -1,11 +1,13 @@
 package com.unauthorisedadults.dnnr.models.models;
 
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Recipe {
+public class Recipe implements Serializable {
     // https://www.themealdb.com/api.php
 
+    private int idMeal;
     private String strMeal; //"strMeal"
     private URL strMealThumb; // "strMealThumb"
     private String strCategory; //"strCategory"
@@ -17,6 +19,10 @@ public class Recipe {
     }
 
     public Recipe() {
+    }
+
+    public int getIdMeal() {
+        return idMeal;
     }
 
     public String getStrMeal() {

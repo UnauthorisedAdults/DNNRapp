@@ -57,11 +57,15 @@ public class VoteFragment extends Fragment {
         viewModel.setCardAdapter(mCardAdapter);
         viewModel.requestRecipes();
         mCardStack.setAdapter(mCardAdapter);
+
+        observeMatch();
     }
 
     private void observeMatch() {
         viewModel.broadcastMatch().observeForever(recipe -> {
-
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("recipe", recipe);
+            navController.navigate(R.id.match_fragment, bundle);
         });
     }
 }

@@ -64,11 +64,11 @@ public class MatchHandlerService {
     }
 
     public boolean isMatch() {
-        // Hvis mindre end to deltagere giver isMatch ikke mening!
-        if (participants.size() < 2)
+        // Hvis mindre end to deltagere, giver isMatch ikke mening!
+        /*if (participants.size() < 2)
         {
             return false;
-        }
+        }*/
 
         for (AffirmativeSwipe affirmative : affirmativeList) {
             if (affirmative.getVotes() == participants.size())

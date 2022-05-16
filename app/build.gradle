@@ -78,5 +78,8 @@ dependencies {
     //Nearby connections
     implementation 'com.google.android.gms:play-services-nearby:18.1.0'
 
+    //Nav arguments
+    apply plugin: 'androidx.navigation.safeargs'
+
 }
 

@@ -35,7 +35,7 @@ public class VoteViewModel extends AndroidViewModel {
     private final ExecutorService executorService;
     private final Handler mainThreadHandler;
 
-    private Recipe match;
+    private final MutableLiveData<Recipe> match;
 
     private final MatchHandlerService matchHandlerService;
     private CardsDataAdapter mCardAdapter;
@@ -45,6 +45,7 @@ public class VoteViewModel extends AndroidViewModel {
         executorService = Executors.newFixedThreadPool(2);
         mainThreadHandler = HandlerCompat.createAsync(Looper.getMainLooper());
         matchHandlerService = MatchHandlerService.getInstance();
+        match = new MutableLiveData<>();
     }
 
     public void setCardAdapter(CardsDataAdapter adapter) {
@@ -52,11 +53,11 @@ public class VoteViewModel extends AndroidViewModel {
     }
 
     public void matched(int index) {
-        match = mCardAdapter.getItem(index);
+        match.setValue(mCardAdapter.getItem(--index));
     }
 
     public LiveData<Recipe> broadcastMatch() {
-        return new MutableLiveData<>(match);
+        return match;
     }
 
     public void requestRecipes() {

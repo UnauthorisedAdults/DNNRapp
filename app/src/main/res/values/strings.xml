@@ -35,5 +35,7 @@
     <string name="preferences">Preferences</string>
     <string name="filters">Filters</string>
     <string name="participants">Participants</string>
+    <string name="get_recipe">Get Recipe</string>
+    <string name="matched_recipe">Matched Recipe</string>
 
 </resources>
