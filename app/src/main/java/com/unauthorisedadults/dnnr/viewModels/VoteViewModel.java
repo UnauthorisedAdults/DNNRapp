@@ -1,18 +1,19 @@
 package com.unauthorisedadults.dnnr.viewModels;
 
-import android.annotation.SuppressLint;
 import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.core.os.HandlerCompat;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.LiveDataKt;
 import androidx.lifecycle.MutableLiveData;
 
+import com.unauthorisedadults.dnnr.R;
 import com.unauthorisedadults.dnnr.cardStack.CardsDataAdapter;
 import com.unauthorisedadults.dnnr.models.models.Recipe;
 import com.unauthorisedadults.dnnr.network.RecipeAPI;
@@ -20,8 +21,6 @@ import com.unauthorisedadults.dnnr.network.RecipeAPIConnection;
 import com.unauthorisedadults.dnnr.network.RecipeResponse;
 import com.unauthorisedadults.dnnr.services.MatchHandlerService;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -40,12 +39,34 @@ public class VoteViewModel extends AndroidViewModel {
     private final MatchHandlerService matchHandlerService;
     private CardsDataAdapter mCardAdapter;
 
+    @ColorInt
+    private final int red, green;
+
+    @ColorInt
+    private MutableLiveData<Integer> bgColour;
+
     public VoteViewModel(@NonNull Application application) {
         super(application);
         executorService = Executors.newFixedThreadPool(2);
         mainThreadHandler = HandlerCompat.createAsync(Looper.getMainLooper());
         matchHandlerService = MatchHandlerService.getInstance();
+        bgColour = new MutableLiveData<>();
         match = new MutableLiveData<>();
+
+        red = ContextCompat.getColor(getApplication(), R.color.BG_Red);
+        green = ContextCompat.getColor(getApplication(), R.color.green);
+    }
+
+    public int[] getColours() {
+        return new int[] {red, green};
+    }
+
+    public void setBgColour(@ColorInt int colour) {
+        bgColour.setValue(colour);
+    }
+
+    public LiveData<Integer> getBgColour() {
+        return bgColour;
     }
 
     public void setCardAdapter(CardsDataAdapter adapter) {

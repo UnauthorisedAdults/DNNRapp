@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     private NavController navController;
     private AppBarConfiguration appBarConfiguration;
 
+    private final int drawer_settings = R.id.drawer_settings;
+    private final int drawer_signout = R.id.drawer_signout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,10 +82,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupDrawerItems() {
+
         navigationDrawer.setNavigationItemSelectedListener(v -> {
             int itemId = v.getItemId();
             switch (itemId){
-                case R.id.drawer_signout:
+                case drawer_settings:
+                    break;
+                case drawer_signout:
                     signOut();
                     break;
                 default:
@@ -99,18 +104,6 @@ public class MainActivity extends AppCompatActivity {
     private void signOut() {
         mainViewModel.signOut();
     }
-
-    /*Start group metoden sender brugeren til et group owner view. I dette view bliver gruppen oprettet
-     og brugeren bliver sat som group owner*/
-    public void startGroup(View view) {
-      /*  Intent intent = new Intent(MainActivity.this, StartGroupOwnerActivity.class);
-        intent.putExtra(UTIL.USER, user);
-        startActivity(intent);*/
-        Context context = getApplicationContext();
-        Intent intent = new Intent(context, VoteActivity.class);
-        startActivity(intent);
-
-        }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -158,12 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkSignedIn() {
         mainViewModel.getUser().observe(this, user -> {
-            if (user != null) {
-//                if (user.getDisplayName() != null)
-//                    username.setText(user.getDisplayName());
-//                else if (user.isAnonymous())
-//                    username.setText("guest");
-            } else
+            if (user == null)
                 startLogin();
         });
     }

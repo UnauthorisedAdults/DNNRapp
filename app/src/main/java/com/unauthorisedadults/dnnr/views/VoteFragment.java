@@ -53,7 +53,7 @@ public class VoteFragment extends Fragment {
             e.printStackTrace();
         }
 
-        mCardAdapter = new CardsDataAdapter(view.getContext());
+        mCardAdapter = new CardsDataAdapter(view.getContext(), viewModel);
         viewModel.setCardAdapter(mCardAdapter);
         viewModel.requestRecipes();
         mCardStack.setAdapter(mCardAdapter);
