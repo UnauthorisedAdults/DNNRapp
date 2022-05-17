@@ -1,6 +1,10 @@
 # DNNRapp
 An app to allow unauthorised adults to pick their dinner. Users connect in groups to swipe throught different dinner options, tinder-style, and when they agree on a recipe they will be shown their match. I this way it will be much easier to figure out what to make for dinner when you are out of ideas. 
 
+## DEMO
+https://youtu.be/Y8b11hi5e2E 
+OBS: Der er en lille layout bug ved 0:30, som ellers ser så super fint ud på en anden telefon tidligere i dag :)
+
 ## FUNCTIONAL REQUIREMENTS
 
 | Requirement        | Progress           | 
